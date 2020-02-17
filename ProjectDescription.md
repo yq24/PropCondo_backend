@@ -10,3 +10,5 @@ Here are the features I would like to have in the system basically.
 •	Chat Thread – designed for trustee to communicate instead of using email thread, the idea is coming from slack
 •	Calendar Schedule – designed to book common room, reserve maintain service for the condo, such as dumpster clean, garage clean, fire alarm testing, or elevator inspection, ect. 
 •	Payment tool – designed to pay condo fee, common room reserve fee (but here we should concern about the data safety and privacy issue) 
+
+Test---Minjie Zhao
