@@ -1,0 +1,27 @@
+DROP TABLE IF EXISTS `posts`;
+CREATE TABLE `posts` (
+  `post_id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `user_id` VARCHAR(255) NOT NULL,
+  `time` DATETIME NOT NULL,
+  `text` VARCHAR(255) NOT NULL,
+  `image_url` VARCHAR(255) NOT NULL,
+  `anonymous` BOOLEAN NOT NULL,
+  PRIMARY KEY (`post_id`) USING BTREE,
+  FOREIGN KEY (`user_id`) REFERENCES `residents` (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `comments`;
+CREATE TABLE `comments` (
+  `comment_id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `user_id` VARCHAR(255) NOT NULL,
+  `to_whom` VARCHAR(255) NOT NULL,
+  `post_id` INT(11) NOT NULL,
+  `time` DATETIME NOT NULL,
+  `text` VARCHAR(255) NOT NULL,
+  `image_url` VARCHAR(255) NOT NULL,
+  `anonymous` BOOLEAN NOT NULL,
+  PRIMARY KEY (`post_id`) USING BTREE,
+  FOREIGN KEY (`user_id`) REFERENCES `residents` (`user_id`)
+  FOREIGN KEY (`to_whom`) REFERENCES `residents` (`user_id`)
+  FOREIGN KEY (`post_id`) REFERENCES `posts` (`post_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
