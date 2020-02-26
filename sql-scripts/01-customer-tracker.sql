@@ -33,11 +33,29 @@ CREATE TABLE `customer` (
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
+
+DROP TABLE IF EXISTS `comment`;
+CREATE TABLE `comment` (
+  `comment_id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `user_id` VARCHAR(255) NOT NULL,
+  `to_whom_id` VARCHAR(255) NOT NULL,
+  `post_id` INT(11) NOT NULL,
+  `time` DATETIME NOT NULL,
+  `text` VARCHAR(255) NOT NULL,
+  `image_url` VARCHAR(255) NOT NULL,
+  `anonymous` BOOLEAN NOT NULL,
+  PRIMARY KEY (`comment_id`) USING BTREE,
+  FOREIGN KEY (`user_id`) REFERENCES `residents` (`user_id`)
+  FOREIGN KEY (`to_whom_id`) REFERENCES `residents` (`user_id`)
+  FOREIGN KEY (`post_id`) REFERENCES `posts` (`post_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 --
 -- Dumping data for table `customer`
 --
 
 LOCK TABLES `customer` WRITE;
+
 /*!40000 ALTER TABLE `customer` DISABLE KEYS */;
 
 INSERT INTO `customer` VALUES 
@@ -50,6 +68,14 @@ INSERT INTO `customer` VALUES
 /*!40000 ALTER TABLE `customer` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+LOCK TABLES `comment` WRITE;
+
+INSERT INTO `comment` values
+  (1,1,2,3,'1582711319803','test comment','www.baidu.com',true);
+
+UNLOCK TABLES;
+
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

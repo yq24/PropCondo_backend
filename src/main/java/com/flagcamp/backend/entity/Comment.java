@@ -14,14 +14,14 @@ public class Comment {
     @Column(name="user_id")
     private int user_id;
 
-    @Column(name="to_whom")
-    private int to_whom;
+    @Column(name="to_whom_id")
+    private int to_whom_id;
 
     @Column(name="post_id")
     private int post_id;
 
     @Column(name="time")
-    private Date time;
+    private String time;
 
     @Column(name="text")
     private String text;
@@ -52,12 +52,12 @@ public class Comment {
         this.user_id = user_id;
     }
 
-    public int getTo_whom() {
-        return to_whom;
+    public int getTo_whom_id() {
+        return to_whom_id;
     }
 
-    public void setTo_whom(int to_whom) {
-        this.to_whom = to_whom;
+    public void setTo_whom_id(int to_whom) {
+        this.to_whom_id = to_whom;
     }
 
     public int getPost_id() {
@@ -68,11 +68,11 @@ public class Comment {
         this.post_id = post_id;
     }
 
-    public Date getTime() {
+    public String getTime() {
         return time;
     }
 
-    public void setTime(Date time) {
+    public void setTime(String time) {
         this.time = time;
     }
 
@@ -105,7 +105,7 @@ public class Comment {
         return "Comment{" +
                 "comment_id=" + comment_id +
                 ", user_id=" + user_id +
-                ", to_whom=" + to_whom +
+                ", to_whom_id=" + to_whom_id +
                 ", post_id=" + post_id +
                 ", time=" + time +
                 ", text='" + text + '\'' +
