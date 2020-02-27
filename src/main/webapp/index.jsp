@@ -4,7 +4,7 @@
 <h3>PropCondo Home Page</h3>
 
 <hr>
-<a href="api/customers">Get All Customers</a>
+<a href="api/comments">Get All Comments</a>
 
 </body>
 </html>
