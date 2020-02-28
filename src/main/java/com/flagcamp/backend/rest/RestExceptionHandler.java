@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @ControllerAdvice
 public class CommentRestExceptionHandler {
     @ExceptionHandler
-    public ResponseEntity<CommentErrorResponse> handlerException(CommentNotFoundException exc) {
+    public ResponseEntity<CommentErrorResponse> handlerException(NotFoundException exc) {
         CommentErrorResponse error = new CommentErrorResponse(
                 HttpStatus.NOT_FOUND.value(),
                 exc.getMessage(),
