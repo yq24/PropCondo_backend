@@ -25,3 +25,39 @@ CREATE TABLE `comment` (
   FOREIGN KEY (`to_whom_id`) REFERENCES `residents` (`user_id`)
   FOREIGN KEY (`post_id`) REFERENCES `posts` (`post_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `resident`;
+CREATE TABLE `resident` (
+  `username` VARCHAR(255) NOT NULL,
+  `password` VARCHAR(255) NOT NULL,
+  `room_id` VARCHAR(255) NOT NULL,
+  `email` VARCHAR(255) NOT NULL,
+  `first_name` VARCHAR(255) NOT NULL,
+  `last_name` VARCHAR(255) NOT NULL,
+  `is_admin` BOOLEAN NOT NULL,
+  PRIMARY KEY (`username`) USING BTREE,
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `reservation`;
+CREATE TABLE `reservation` (
+  `reservation_id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `username` VARCHAR(255) NOT NULL,
+  `study_room_id` VARCHAR(255) NOT NULL,
+  `start_time` DATETIME NOT NULL,
+  `end_time` DATETIME NOT NULL,
+  PRIMARY KEY (`reservation_id`) USING BTREE,
+  FOREIGN KEY (`username`) REFERENCES `resident ` (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `message`;
+CREATE TABLE `message` (
+  `message_id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `user_from` VARCHAR(255) NOT NULL,
+  `user_to` VARCHAR(255) NOT NULL,
+  `time` DATETIME NOT NULL,
+  `image` VARCHAR(255) DEFAULT NULL,
+  `text` VARCHAR(255) DEFAULT NULL,
+  PRIMARY KEY (`message_id`) USING BTREE,
+  FOREIGN KEY (`user_from`) REFERENCES `resident ` (`username`),
+  FOREIGN KEY (`user_to`) REFERENCES `resident ` (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
