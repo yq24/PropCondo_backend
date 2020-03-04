@@ -6,10 +6,10 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 @ControllerAdvice
-public class CommentRestExceptionHandler {
+public class RestExceptionHandler {
     @ExceptionHandler
-    public ResponseEntity<CommentErrorResponse> handlerException(NotFoundException exc) {
-        CommentErrorResponse error = new CommentErrorResponse(
+    public ResponseEntity<ErrorResponse> handlerException(NotFoundException exc) {
+        ErrorResponse error = new ErrorResponse(
                 HttpStatus.NOT_FOUND.value(),
                 exc.getMessage(),
                 System.currentTimeMillis());
@@ -17,8 +17,8 @@ public class CommentRestExceptionHandler {
     }
 
     @ExceptionHandler
-    public ResponseEntity<CommentErrorResponse> handlerException(Exception exc) {
-        CommentErrorResponse error = new CommentErrorResponse(
+    public ResponseEntity<ErrorResponse> handlerException(Exception exc) {
+        ErrorResponse error = new ErrorResponse(
                 HttpStatus.BAD_REQUEST.value(),
                 exc.getMessage(),
                 System.currentTimeMillis());
