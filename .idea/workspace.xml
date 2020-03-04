@@ -8,14 +8,6 @@
   <component name="ChangeListManager">
     <list default="true" id="70c7c1f2-742f-4926-8327-a495621d9f07" name="Default Changelist" comment="build the initial Spring backend framework for PropCondo project with db connection and RESTful api">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/flagcamp/backend/dao/ResidentDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/flagcamp/backend/dao/ResidentDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/flagcamp/backend/dao/ResidentDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/flagcamp/backend/dao/ResidentDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/flagcamp/backend/rest/AllRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/flagcamp/backend/rest/AllRestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/flagcamp/backend/rest/ErrorResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/flagcamp/backend/rest/ErrorResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/flagcamp/backend/rest/NotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/flagcamp/backend/rest/NotFoundException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/flagcamp/backend/rest/RestExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/flagcamp/backend/rest/RestExceptionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/flagcamp/backend/service/ResidentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/flagcamp/backend/service/ResidentService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/flagcamp/backend/service/ResidentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/flagcamp/backend/service/ResidentServiceImpl.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -474,7 +466,7 @@
       <workItem from="1582516594600" duration="3003000" />
       <workItem from="1582520791690" duration="18602000" />
       <workItem from="1583046756098" duration="2330000" />
-      <workItem from="1583311028744" duration="1012000" />
+      <workItem from="1583311028744" duration="1295000" />
     </task>
     <task id="LOCAL-00001" summary="build the initial Spring backend framework for PropCondo project with db connection and RESTful api">
       <created>1582519117803</created>
@@ -508,7 +500,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="21944000" />
+    <option name="totallyTimeSpent" value="22227000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
