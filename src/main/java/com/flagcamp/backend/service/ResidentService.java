@@ -1,4 +1,15 @@
 package com.flagcamp.backend.service;
 
+import com.flagcamp.backend.entity.Resident;
+
+import java.util.List;
+
 public interface ResidentService {
+    public List<Resident> getResidents();
+
+    public void saveResident(Resident theResident);
+
+    public Resident getResident(int theId);
+
+    public void deleteResident(int theId);
 }

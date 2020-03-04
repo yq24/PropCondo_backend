@@ -1,14 +1,14 @@
 package com.flagcamp.backend.rest;
 
-public class CommentErrorResponse {
+public class ErrorResponse {
     private int status;
     private String message;
     private long timeStamp;
-    public CommentErrorResponse() {
+    public ErrorResponse() {
 
     }
 
-    public CommentErrorResponse(int status, String message, long timeStamp) {
+    public ErrorResponse(int status, String message, long timeStamp) {
         this.status = status;
         this.message = message;
         this.timeStamp = timeStamp;
