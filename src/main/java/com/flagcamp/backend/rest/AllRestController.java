@@ -1,20 +1,19 @@
 package com.flagcamp.backend.rest;
 
-import com.flagcamp.backend.entity.Comment;
-import com.flagcamp.backend.entity.Resident;
-import com.flagcamp.backend.entity.Post;
-import com.flagcamp.backend.service.CommentService;
-import com.flagcamp.backend.service.PostService;
-import com.flagcamp.backend.service.ResidentService;
+import com.flagcamp.backend.entity.*;
+import com.flagcamp.backend.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @CrossOrigin
 @RestController
 @RequestMapping("/api")
 public class AllRestController {
+
+    //******************************** comment
 
     @Autowired
     private CommentService commentService;
@@ -58,6 +57,8 @@ public class AllRestController {
         return "Deleted Comment id - " + commentId;
     }
 
+    //******************************** post
+
     @Autowired
     private PostService postService;
 
@@ -100,6 +101,8 @@ public class AllRestController {
         return "Deleted Comment id - " + postId;
     }
 
+    //******************************** resident
+
     @Autowired
     private ResidentService residentService;
 
@@ -140,6 +143,83 @@ public class AllRestController {
         }
         residentService.deleteResident(username);
         return "Deleted username - " + username;
+    }
+
+    //******************************** message
+
+    @Autowired
+    private MessageService messageService;
+
+    @GetMapping("/messages/get/{messageId}")
+    public Message getMessage(@PathVariable int messageId) {
+        Message message = messageService.getMessage(messageId);
+        if (message == null) {
+            throw new NotFoundException("Resident id not found - " + messageId);
+        }
+        return message;
+    }
+
+    @GetMapping("/messages/received")
+    public List<Message> receivedMessages(@PathVariable String username) {
+        return messageService.receivedMessages(username);
+    }
+
+    @GetMapping("/messages/sent")
+    public List<Message> sentMessages(@PathVariable String username) {
+        return messageService.sentMessages(username);
+    }
+
+    @PostMapping("/messages/add")
+    public Message addMessage(@RequestBody Message message) {
+        message.setMessageId(0);
+        messageService.addMessage(message);
+        return message;
+    }
+
+    @DeleteMapping("/messages/delete/{messageId}")
+    public String deleteMessage(@PathVariable int messageId) {
+        Message tempMessage = messageService.getMessage(messageId);
+        if (tempMessage == null) {
+            throw new NotFoundException("message id not found - " + messageId);
+        }
+        messageService.deleteMessage(messageId);
+        return "Deleted message - " + messageId;
+    }
+
+    //******************************** reservation
+
+    @Autowired
+    private ReservationService reservationService;
+
+    @GetMapping("/reservations/get/{reservationId}")
+    public Reservation getReservation(@PathVariable int reservationId) {
+        Reservation reservation = reservationService.getReservation(reservationId);
+        if (reservation == null) {
+            throw new NotFoundException("reservation id not found - " + reservationId);
+        }
+        return reservation;
+    }
+
+    @GetMapping("/reservations/getAll")
+    public List<Reservation> getReservations() {
+        return reservationService.getReservations();
+    }
+
+    @PostMapping("/reservations/add")
+    public Reservation addReservation(@RequestBody Reservation reservation) {
+        reservation.setReservationId(0);   //hardcode
+        reservationService.addReservation(reservation);
+        return reservation;
+    }
+
+    @DeleteMapping("/reservations/delete/{reservationId}")
+    public String deleteReservation(@PathVariable int reservationId) {
+        Reservation tempReservation = reservationService.getReservation(reservationId);
+        if (tempReservation == null) {
+            throw new NotFoundException("Reservation id not found - " + reservationId);
+        }
+        reservationService.deleteReservation(reservationId);
+        return "Deleted reservation - " + reservationId;
     }
 
 }

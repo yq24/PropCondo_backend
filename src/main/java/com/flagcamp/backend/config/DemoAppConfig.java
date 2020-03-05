@@ -70,7 +70,7 @@ public class DemoAppConfig implements WebMvcConfigurer {
 
 		props.setProperty("hibernate.dialect", env.getProperty("hibernate.dialect"));
 		props.setProperty("hibernate.show_sql", env.getProperty("hibernate.show_sql"));
-		
+		props.setProperty("hibernate.hbm2ddl.suto", "update");
 		return props;				
 	}
 
