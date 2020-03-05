@@ -38,7 +38,8 @@ public class MessageDaoImpl implements MessageDao {
     public List<Message> receivedMessages(String username) {
         Session currentSession = sessionFactory.getCurrentSession();
         // create a query
-        Query<Message> theQuery = currentSession.createQuery("from Message where userTo =: username", Message.class);
+        Query<Message> theQuery = currentSession.createQuery("from Message where userTo =: theUsername", Message.class);
+        theQuery.setParameter("theUsername", username);
         // execute query and get result list
         List<Message> messages = theQuery.getResultList();
         // return the results
@@ -54,7 +55,8 @@ public class MessageDaoImpl implements MessageDao {
     public List<Message> sentMessages(String username) {
         Session currentSession = sessionFactory.getCurrentSession();
         // create a query
-        Query<Message> theQuery = currentSession.createQuery("from Message where userFrom =: username", Message.class);
+        Query<Message> theQuery = currentSession.createQuery("from Message where userFrom =: theUsername", Message.class);
+        theQuery.setParameter("theUsername", username);
         // execute query and get result list
         List<Message> messages = theQuery.getResultList();
         // return the results

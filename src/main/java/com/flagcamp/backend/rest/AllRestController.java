@@ -154,17 +154,17 @@ public class AllRestController {
     public Message getMessage(@PathVariable int messageId) {
         Message message = messageService.getMessage(messageId);
         if (message == null) {
-            throw new NotFoundException("Resident id not found - " + messageId);
+            throw new NotFoundException("message id not found - " + messageId);
         }
         return message;
     }
 
-    @GetMapping("/messages/received")
+    @GetMapping("/messages/received/{username}")
     public List<Message> receivedMessages(@PathVariable String username) {
         return messageService.receivedMessages(username);
     }
 
-    @GetMapping("/messages/sent")
+    @GetMapping("/messages/sent/{username}")
     public List<Message> sentMessages(@PathVariable String username) {
         return messageService.sentMessages(username);
     }
