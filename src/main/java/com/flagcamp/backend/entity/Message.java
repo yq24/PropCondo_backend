@@ -15,7 +15,7 @@ public class Message {
     private String userFrom;
 
     @Column(name = "user_to")
-    private Date userTo;
+    private String userTo;
 
     @Column(name = "time")
     private Date time;
@@ -46,11 +46,11 @@ public class Message {
         this.userFrom = userFrom;
     }
 
-    public Date getUserTo() {
+    public String getUserTo() {
         return userTo;
     }
 
-    public void setUserTo(Date userTo) {
+    public void setUserTo(String userTo) {
         this.userTo = userTo;
     }
 
