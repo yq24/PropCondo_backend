@@ -120,7 +120,7 @@ public class AllRestController {
         return theResident;
     }
 
-    @PostMapping("/rensidents")
+    @PostMapping("/residents")
     public Resident addResident(@RequestBody Resident theResident) {
         theResident.setUsername(0);   //hardcode
 
