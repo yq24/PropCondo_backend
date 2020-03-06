@@ -9,7 +9,7 @@ public interface ResidentService {
 
     public void saveResident(Resident theResident);
 
-    public Resident getResident(int theId);
+    public Resident getResident(String username);
 
-    public void deleteResident(int theId);
+    public void deleteResident(String username);
 }

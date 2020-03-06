@@ -111,11 +111,11 @@ public class AllRestController {
         return residentService.getResidents();
     }
 
-    @GetMapping("/residents/{userId}")
-    public Resident getResident(@PathVariable int userId) {
-        Resident theResident = residentService.getResident(userId);
+    @GetMapping("/residents/{username}")
+    public Resident getResident(@PathVariable String username) {
+        Resident theResident = residentService.getResident(username);
         if (theResident == null) {
-            throw new NotFoundException("Resident id not found - " + userId);
+            throw new NotFoundException("Resident id not found - " + username);
         }
         return theResident;
     }
@@ -138,13 +138,13 @@ public class AllRestController {
     }
 
     @DeleteMapping("/residents/{userId}")
-    public String deleteResident(@PathVariable int userId) {
-        Resident tempResident = residentService.getResident(userId);
+    public String deleteResident(@PathVariable String username) {
+        Resident tempResident = residentService.getResident(username);
         if (tempResident == null) {
-            throw new NotFoundException("Resident id not found - " + userId);
+            throw new NotFoundException("Resident id not found - " + username);
         }
-        residentService.deleteResident(userId);
-        return "Deleted username - " + userId;
+        residentService.deleteResident(username);
+        return "Deleted username - " + username;
     }
 
     //******************************** message

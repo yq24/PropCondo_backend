@@ -46,27 +46,30 @@ public class ResidentDAOImpl implements ResidentDAO {
     }
 
     @Override
-    public Resident getResident(int user_id) {
+    public Resident getResident(String username) {
 
         // get the current hibernate session
         Session currentSession = sessionFactory.getCurrentSession();
 
         // now retrieve/read from database using the primary key
-        Resident theResident = currentSession.get(Resident.class, user_id);
+        Query<Resident> theQuery = currentSession.createQuery("from Resident where username =: theUsername", Resident.class);
+        theQuery.setParameter("theUsername", username);
+
+        Resident theResident = theQuery.getSingleResult();
 
         return theResident;
     }
 
     @Override
-    public void deleteResident(int userId) {
+    public void deleteResident(String username) {
 
         // get the current hibernate session
         Session currentSession = sessionFactory.getCurrentSession();
 
         // delete object with primary key
         Query theQuery =
-                currentSession.createQuery("delete from Resident where user_id =:ResidentId");
-        theQuery.setParameter("ResidentId", userId);
+                currentSession.createQuery("delete from Resident where username =:ResidentId");
+        theQuery.setParameter("ResidentId", username);
 
         theQuery.executeUpdate();
     }
