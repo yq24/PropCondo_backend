@@ -111,23 +111,25 @@ public class AllRestController {
         return residentService.getResidents();
     }
 
-    @GetMapping("/residents/{username}")
-    public Resident getResident(@PathVariable String username) {
-        Resident theResident = residentService.getResident(username);
+    @GetMapping("/residents/{userId}")
+    public Resident getResident(@PathVariable int userId) {
+        Resident theResident = residentService.getResident(userId);
         if (theResident == null) {
-            throw new NotFoundException("Resident id not found - " + username);
+            throw new NotFoundException("Resident id not found - " + userId);
         }
         return theResident;
     }
 
     @PostMapping("/residents")
     public Resident addResident(@RequestBody Resident theResident) {
-        theResident.setUsername(null);   //hardcode
+        theResident.setUser_id(0);   //hardcode
 
         residentService.saveResident(theResident);
 
         return theResident;
     }
+
+
 
     @PutMapping("/residents")
     public Resident updateResident(@RequestBody Resident theResident) {
@@ -135,14 +137,14 @@ public class AllRestController {
         return theResident;
     }
 
-    @DeleteMapping("/residents/{username}")
-    public String deleteResident(@PathVariable String username) {
-        Resident tempResident = residentService.getResident(username);
+    @DeleteMapping("/residents/{userId}")
+    public String deleteResident(@PathVariable int userId) {
+        Resident tempResident = residentService.getResident(userId);
         if (tempResident == null) {
-            throw new NotFoundException("Resident id not found - " + username);
+            throw new NotFoundException("Resident id not found - " + userId);
         }
-        residentService.deleteResident(username);
-        return "Deleted username - " + username;
+        residentService.deleteResident(userId);
+        return "Deleted username - " + userId;
     }
 
     //******************************** message

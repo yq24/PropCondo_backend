@@ -1,4 +1,6 @@
 package com.flagcamp.backend.entity;
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 
 @Entity
@@ -6,7 +8,10 @@ import javax.persistence.*;
 public class Resident {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "user_id")
+    private int user_id;
+
     @Column(name = "username")
     private String username;
 
@@ -33,6 +38,14 @@ public class Resident {
 
     }
 
+    public int getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
+    }
+
     public String getUsername() {
         return username;
     }
@@ -40,6 +53,7 @@ public class Resident {
     public void setUsername(String username) {
         this.username = username;
     }
+
 
     public String getPassword() {
         return password;
@@ -92,7 +106,8 @@ public class Resident {
     @Override
     public String toString() {
         return "Resident{" +
-                "username=" + username +
+                "user_id=" + user_id +
+                ", username=" + username +
                 ", password='" + password + '\'' +
                 ", roomId='" + roomId + '\'' +
                 ", email='" + email + '\'' +

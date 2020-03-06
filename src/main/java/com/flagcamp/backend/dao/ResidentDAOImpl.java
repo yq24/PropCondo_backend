@@ -24,7 +24,7 @@ public class ResidentDAOImpl implements ResidentDAO {
 
         // create a query  ... sort by id
         Query<Resident> theQuery =
-                currentSession.createQuery("from Resident order by username",
+                currentSession.createQuery("from Resident order by user_id",
                         Resident.class);
 
         // execute query and get result list
@@ -46,27 +46,27 @@ public class ResidentDAOImpl implements ResidentDAO {
     }
 
     @Override
-    public Resident getResident(String username) {
+    public Resident getResident(int user_id) {
 
         // get the current hibernate session
         Session currentSession = sessionFactory.getCurrentSession();
 
         // now retrieve/read from database using the primary key
-        Resident theResident = currentSession.get(Resident.class, username);
+        Resident theResident = currentSession.get(Resident.class, user_id);
 
         return theResident;
     }
 
     @Override
-    public void deleteResident(String username) {
+    public void deleteResident(int userId) {
 
         // get the current hibernate session
         Session currentSession = sessionFactory.getCurrentSession();
 
         // delete object with primary key
         Query theQuery =
-                currentSession.createQuery("delete from Resident where username =:ResidentId");
-        theQuery.setParameter("ResidentId", username);
+                currentSession.createQuery("delete from Resident where user_id =:ResidentId");
+        theQuery.setParameter("ResidentId", userId);
 
         theQuery.executeUpdate();
     }
