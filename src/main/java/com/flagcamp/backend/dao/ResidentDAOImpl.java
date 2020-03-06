@@ -46,7 +46,7 @@ public class ResidentDAOImpl implements ResidentDAO {
     }
 
     @Override
-    public Resident getResident(int username) {
+    public Resident getResident(String username) {
 
         // get the current hibernate session
         Session currentSession = sessionFactory.getCurrentSession();
@@ -58,7 +58,7 @@ public class ResidentDAOImpl implements ResidentDAO {
     }
 
     @Override
-    public void deleteResident(int username) {
+    public void deleteResident(String username) {
 
         // get the current hibernate session
         Session currentSession = sessionFactory.getCurrentSession();

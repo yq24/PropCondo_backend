@@ -31,14 +31,14 @@ public class ResidentServiceImpl implements ResidentService {
 
     @Override
     @Transactional
-    public Resident getResident(int theId) {
+    public Resident getResident(String theId) {
 
         return ResidentDAO.getResident(theId);
     }
 
     @Override
     @Transactional
-    public void deleteResident(int theId) {
+    public void deleteResident(String theId) {
 
         ResidentDAO.deleteResident(theId);
     }

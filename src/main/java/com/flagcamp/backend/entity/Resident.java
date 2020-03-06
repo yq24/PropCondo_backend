@@ -8,7 +8,7 @@ public class Resident {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "username")
-    private int username;
+    private String username;
 
     @Column(name = "password")
     private String password;
@@ -33,11 +33,11 @@ public class Resident {
 
     }
 
-    public int getUsername() {
+    public String getUsername() {
         return username;
     }
 
-    public void setUsername(int username) {
+    public void setUsername(String username) {
         this.username = username;
     }
 

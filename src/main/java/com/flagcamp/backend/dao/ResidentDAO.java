@@ -10,8 +10,8 @@ public interface ResidentDAO {
 
     public void saveResident(Resident theResident);
 
-    public Resident getResident(int theId);
+    public Resident getResident(String theId);
 
-    public void deleteResident(int theId);
+    public void deleteResident(String theId);
 
 }

@@ -112,7 +112,7 @@ public class AllRestController {
     }
 
     @GetMapping("/residents/{username}")
-    public Resident getResident(@PathVariable int username) {
+    public Resident getResident(@PathVariable String username) {
         Resident theResident = residentService.getResident(username);
         if (theResident == null) {
             throw new NotFoundException("Resident id not found - " + username);
@@ -122,7 +122,7 @@ public class AllRestController {
 
     @PostMapping("/residents")
     public Resident addResident(@RequestBody Resident theResident) {
-        theResident.setUsername(0);   //hardcode
+        theResident.setUsername(null);   //hardcode
 
         residentService.saveResident(theResident);
 
@@ -136,7 +136,7 @@ public class AllRestController {
     }
 
     @DeleteMapping("/residents/{username}")
-    public String deleteResident(@PathVariable int username) {
+    public String deleteResident(@PathVariable String username) {
         Resident tempResident = residentService.getResident(username);
         if (tempResident == null) {
             throw new NotFoundException("Resident id not found - " + username);
