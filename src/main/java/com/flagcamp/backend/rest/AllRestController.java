@@ -137,7 +137,7 @@ public class AllRestController {
         return theResident;
     }
 
-    @DeleteMapping("/residents/{userId}")
+    @DeleteMapping("/residents/{username}")
     public String deleteResident(@PathVariable String username) {
         Resident tempResident = residentService.getResident(username);
         if (tempResident == null) {
