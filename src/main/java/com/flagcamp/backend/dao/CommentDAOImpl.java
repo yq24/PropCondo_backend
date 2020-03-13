@@ -35,6 +35,23 @@ public class CommentDAOImpl implements CommentDAO {
     }
 
     @Override
+    public List<Comment> getComments(int postid) {
+
+        // get the current hibernate session
+        Session currentSession = sessionFactory.getCurrentSession();
+
+        // create a query  ... sort by id
+        Query<Comment> theQuery = currentSession.createQuery("from Comment where post_id =: postId", Comment.class);
+        theQuery.setParameter("postId", postid);
+
+        // execute query and get result list
+        List<Comment> comments = theQuery.getResultList();
+
+        // return the results
+        return comments;
+    }
+
+    @Override
     public void saveComment(Comment theComment) {
 
         // get current hibernate session

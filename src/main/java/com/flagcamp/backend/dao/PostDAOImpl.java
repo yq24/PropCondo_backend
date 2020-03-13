@@ -1,5 +1,8 @@
 package com.flagcamp.backend.dao;
 
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
+import com.flagcamp.backend.entity.Comment;
 import com.flagcamp.backend.entity.Post;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -15,9 +18,11 @@ public class PostDAOImpl implements PostDAO {
     // need to inject the session factory
     @Autowired
     private SessionFactory sessionFactory;
+    @Autowired
+    private CommentDAO commentDAO;
 
     @Override
-    public List<Post> getPosts() {
+    public JSONArray getPosts() {
 
         // get the current hibernate session
         Session currentSession = sessionFactory.getCurrentSession();
@@ -30,8 +35,22 @@ public class PostDAOImpl implements PostDAO {
         // execute query and get result list
         List<Post> Posts = theQuery.getResultList();
 
+        JSONArray ans = new JSONArray();
+        for (Post post : Posts) {
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("postId",post.getPost_id());
+            jsonObject.put("postUser",post.getUser_id());
+            jsonObject.put("postTime",post.getTime());
+            jsonObject.put("postTest",post.getText());
+            jsonObject.put("postImage",post.getImage_url());
+            jsonObject.put("postAnonymous",post.isAnonymous());
+            //添加comment
+            List<Comment> comments = commentDAO.getComments(post.getPost_id());
+            jsonObject.put("comments", comments);
+            ans.add(jsonObject);
+        }
         // return the results
-        return Posts;
+        return ans;
     }
 
     @Override

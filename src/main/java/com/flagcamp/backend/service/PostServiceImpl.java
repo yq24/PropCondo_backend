@@ -1,5 +1,6 @@
 package com.flagcamp.backend.service;
 
+import com.alibaba.fastjson.JSONArray;
 import com.flagcamp.backend.dao.PostDAO;
 import com.flagcamp.backend.entity.Post;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,7 @@ public class PostServiceImpl implements PostService {
 
     @Override
     @Transactional
-    public List<Post> getPosts() {
+    public JSONArray getPosts() {
 
         return PostDAO.getPosts();
     }

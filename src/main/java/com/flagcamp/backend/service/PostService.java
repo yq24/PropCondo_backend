@@ -1,11 +1,12 @@
 package com.flagcamp.backend.service;
 
+import com.alibaba.fastjson.JSONArray;
 import com.flagcamp.backend.entity.Post;
 
 import java.util.List;
 
 public interface PostService {
-    public List<Post> getPosts();
+    public JSONArray getPosts();
 
     public void savePost(Post thePost);
 

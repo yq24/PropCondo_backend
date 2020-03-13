@@ -1,12 +1,13 @@
 package com.flagcamp.backend.dao;
 
+import com.alibaba.fastjson.JSONArray;
 import com.flagcamp.backend.entity.Post;
 
 import java.util.List;
 
 public interface PostDAO {
 
-    public List<Post> getPosts();
+    public JSONArray getPosts();
 
     public void savePost(Post thePost);
 

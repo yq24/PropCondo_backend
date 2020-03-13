@@ -1,5 +1,6 @@
 package com.flagcamp.backend.rest;
 
+import com.alibaba.fastjson.JSONArray;
 import com.flagcamp.backend.entity.*;
 import com.flagcamp.backend.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,8 +63,8 @@ public class AllRestController {
     @Autowired
     private PostService postService;
 
-    @GetMapping("/posts")
-    public List<Post> getPosts() {
+    @GetMapping("/allPosts")
+    public JSONArray getPosts() {
         return postService.getPosts();
     }
 
